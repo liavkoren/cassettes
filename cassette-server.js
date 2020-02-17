@@ -5,14 +5,14 @@ const port = 3000;
 app.use(express.static('static'))
 
 app.get('/cassettes', function (req, res) {
-  res.json([
-    {'title': 'Careless whisperer'},
-    {'title': 'Thriller'},
-    {'title': 'Ok Computer'},
-    {'title': 'Cermemonials'},
-    {'title': 'Call the Doctor'},
-    {'title': 'Blue in Green<'}
-  ])
+  res.json({'cassettesList': [
+      {'title': 'Careless whisperer'},
+      {'title': 'Thriller'},
+      {'title': 'Ok Computer'},
+      {'title': 'Cermemonials'},
+      {'title': 'Call the Doctor'},
+      {'title': 'Blue in Green<'}
+    ]})
 })
 
 app.post('/cassettes', function (req, res) {
