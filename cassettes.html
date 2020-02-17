@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <title>Cassettes demo</title>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" type="text/css" href='cassettes.css'>
+</head>
+<body>
+<h1>My totally radical cassette collection, d00d</h1>
+
+<ul id='cassette-list'>
+    <li>Careless whisperer</li>
+    <li>Thriller</li>
+    <li>Ok Computer</li>
+    <li>Cermemonials</li>
+    <li>Call the Doctor</li>
+    <li>Blue in Green</li>
+</ul>
+
+<form action='/cassette' method='post'>
+    <label for='add-cassette'>Add some sweet new cassettes, d00d!
+        <input type="text" id="add-cassette" name="add-cassette" minlength="1" maxlength='200' required>
+    </label>
+    <br>
+    <label for='add-description'>
+        Add a description of the sweet tunes on this cassette.
+        <br>
+        <textarea id='add-description' name='add-description'></textarea>
+    </label>
+    <br>
+    <input type="submit" name="Sweet!">
+</form>
+</body>
+</html>

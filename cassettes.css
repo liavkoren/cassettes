@@ -1,0 +1,26 @@
+body {
+    margin-left: 10%;
+}
+
+form {
+    margin-top: 5%;
+}
+
+input[type='submit'] {
+    margin-top: 5%;
+}
+
+ul {
+    border-top: dotted 1px #aaa;
+    border-bottom: dotted 1px #aaa;
+    width: 60%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+textarea {
+    width: 63%;
+    height: 150px;
+    padding-top: 10px;
+    margin-top: 20px;
+}
