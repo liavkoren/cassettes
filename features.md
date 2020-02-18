@@ -1,6 +1,7 @@
 - [x] read data from API w. jQuery
 - [x] write data to mongo
-- [ ]cassette collection demo
+- [x] serve static files
+- [ ] cassette collection demo
     - [x] add cassette
     - [ ] delete cassette
     - [x] get the list of cassettes

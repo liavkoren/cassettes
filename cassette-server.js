@@ -10,7 +10,7 @@ const port = 3000;
 app.use(express.static('static'));  // serve static files
 app.use(bodyParser.urlencoded({ extended: false }));  // make request body data available
 
-app.get('/api/cassettes', function (req, res, next) {
+function GetCassettesApi (req, res, next) {
     function resultsCallback (err, docs) {
         if (docs) {
             res.json({'cassettesList': docs})
@@ -20,9 +20,11 @@ app.get('/api/cassettes', function (req, res, next) {
         }
     }
     mongoIO.read(mongoURL.url, resultsCallback);
-})
+}
 
-app.post('/api/cassettes', function (req, res, next) {
+app.get('/api/cassettes', GetCassettesApi)
+
+function PostCassettesApi (req, res, next) {
     if (req.body.add_cassette) {
         try {
             mongoIO.write(
@@ -34,6 +36,11 @@ app.post('/api/cassettes', function (req, res, next) {
         }
         res.redirect('/cassettes.html')
     }
+}
+
+app.post('/api/cassettes', PostCassettesApi)
+app.get('/', function(req, res) {
+    res.redirect('/cassettes.html')
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, function() {console.log(`Example app listening on port ${port}!`)})

@@ -15,21 +15,29 @@ function write(url, data) {
         // general, mongo will create a collection if you reference one that
         // doesn't yet exist. Likewise, if you ask for the quantity of a
         // model that doesn't exist, it will just say 0.
-      const collection = client.db("test").collection("cassettes");
-      if (Array.isArray(data)) {
-        collection.insertMany(data);
-      } else {
-        collection.insertOne(data);
-      }
-      client.close();
+        if (err) {
+          console.log('Connection error!');
+          throw new Error(err);
+        }
+        const collection = client.db("test").collection("cassettes");
+        if (Array.isArray(data)) {
+          collection.insertMany(data);
+        } else {
+          collection.insertOne(data);
+        }
+        client.close();
     })
 }
 
 function read(url, callback) {
     const client = new MongoClient(url, { useNewUrlParser: true });
     client.connect(function(err) {
-      const collection = client.db("test").collection("cassettes");
-      return collection.find({}).toArray(callback);
+        if (err) {
+          console.log('Connection error!');
+          throw new Error(err);
+        }
+        const collection = client.db("test").collection("cassettes");
+        return collection.find({}).toArray(callback);
   })
 }
 
