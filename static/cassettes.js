@@ -11,13 +11,15 @@ $(document).ready(function () {
     Once that works, update the express server to get the data from mongo...
     */
     var cassette_list = $("#cassette_list");  // aka document.getElementById
-    var data = $.get('cassettes').done(function(data){
+    var data = $.get('/api/cassettes').done(function(data){
         for (cassette of data.cassettesList) {
             cassette_list.append(`<li>${cassette.title}</li>`)
         }
     }).fail(function (err){
         console.log('uh oh!');
         console.log(err);
+        /*
+        ToDo: Display error
+        */
     })
-
 })

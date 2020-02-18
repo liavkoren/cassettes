@@ -16,16 +16,20 @@ function write(url, data) {
         // doesn't yet exist. Likewise, if you ask for the quantity of a
         // model that doesn't exist, it will just say 0.
       const collection = client.db("test").collection("cassettes");
-      collection.insertMany(data);
+      if (Array.isArray(data)) {
+        collection.insertMany(data);
+      } else {
+        collection.insertOne(data);
+      }
       client.close();
     })
 }
 
-function read(url) {
-    var  client = new MongoClient(url, { useNewUrlParser: true });
+function read(url, callback) {
+    const client = new MongoClient(url, { useNewUrlParser: true });
     client.connect(function(err) {
-      var collection = client.db("test").collection("cassettes");
-      return collection.find({}).toArray();
+      const collection = client.db("test").collection("cassettes");
+      return collection.find({}).toArray(callback);
   })
 }
 
